@@ -1,4 +1,4 @@
-<div class="bg-dark text-white" id="footer">
+<div class="bg-dark text-white" id="footer" style="margin-top:35px">
     <div class="container-fluid page__container">
         <div class="row">
             <div class="col-md-3">

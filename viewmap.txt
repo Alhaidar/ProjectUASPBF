@@ -1,0 +1,55 @@
+.
+├── resources
+│   ├── auth
+│   │   ├── login             | Halaman akses ke sistem
+│   │   ├── register          | Halaman pendaftaran
+│   │
+│   ├── akun
+│   │   ├── index             | Edit nama dan password
+│   │
+│   ├── fakultas (role:admin)
+│   │   ├── index             | Daftar fakultas yang tercatat
+│   │   ├── add               |
+│   │   ├── edit              |
+│   │
+│   ├── front
+│   │   ├── dasbor            | Halaman yang ditampilkan setelah otentikasi   [mengambil data jadwal yang memiliki 'waktu_mulai' dan 'waktu_akhir' tidak null]
+│   │   ├── index             | Halaman root website   [mengambil data jadwal yang memiliki 'waktu_mulai' dan 'waktu_akhir' tidak null]
+│   │
+│   ├── includes
+│   │   ├── basenav           | Navigasi yang dipakai di layout base, terletak pada sebelah kiri dan berperan sebagai navigasi authenticated user.
+│   │   ├── footer            | Footer baku yang dipakai di setiap page
+│   │   ├── frontnav          | Navigasi atas disetiap page front (untuk user non authenticated)
+│   │   ├── pagecap           | Header atas yang berisi logo dan atau akses ke sistem, pendaftaram
+│   │
+│   ├── jadwal
+│   │   ├── index             | Tabel berisi jadwal
+│   │   ├── add (admin)       | Menambahkan data tim tertentu untuk melakukan submisi
+│   │   ├── edit (admin)      | Ditampilkan tim yang telah melakukan submisi/ yang telah ditambahkan oleh admin
+│   │
+│   ├── layouts
+│   │   ├── base              | Templating untuk authenticated user
+│   │   ├── front             | Templating untuk non-authenticated user
+│   │
+│   ├── lomba (role:admin)
+│   │   ├── index             | Daftar lomba yang tercatat
+│   │   ├── add               |
+│   │   ├── edit              |
+│   │
+│   ├── pengumpulan (role:peserta)
+│   │   ├── index             | Dropbox submisi dan record submisi, peserta jg bisa menghapus submisi, setelah submit secara berkelanjutan membuat data jadwal namun dengan date null
+│   │
+│   ├── pengumuman
+│   │   ├── index             | Konten serupa blog
+│   │   ├── show?id=          | Konten setiap satu page
+│   │   ├── add (admin)       |
+│   │   ├── edit (admin)      |
+│   │
+│   ├── submisi (role:juri sesuai bidang)
+│   │   ├── index             | Paginated dari submisi sesuai bidang. Melalui submisi yang ada, juri dapat melihat data tim.
+│   │
+│   ├── tim
+│   │   ├── index (peserta)    | Edit keanggotaan tim
+│   │   ├── show?id= (adm,jr) | Menampilkan data tim secara spesifik
+│
+└── END
