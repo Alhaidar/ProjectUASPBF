@@ -19,7 +19,7 @@ class CreateAnggotaTable extends Migration
             $table->integer('id_fakultas')->nullable()->index('anggota_ibfk_1');
             $table->string('nama', 128)->nullable();
             $table->string('nim', 12)->nullable();
-            $table->string('nomor', 16)->nullable();
+            $table->string('no_telp', 16)->nullable();
             $table->string('email', 28)->nullable();
             $table->string('alamat')->nullable();
             $table->timestamp('created_at')->useCurrent();

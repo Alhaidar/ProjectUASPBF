@@ -21,6 +21,22 @@ class CreateLombaTable extends Migration
             $table->dateTime('updated_at')->nullable();
             $table->softDeletes();
         });
+        $bidang = [
+          "PKM-P",
+          "PKM-M",
+          "PKM-K",
+          "PKM-T",
+          "PKM-KC",
+          "PKM-AI",
+          "PKM-GT",
+          "PKM-GFK"
+        ];
+        foreach ($bidang as $pkm) {
+          $seed= \App\Lomba::create([
+            'nama' => $pkm,
+            'batas_waktu' => '2021-1-13 00:00:00'
+          ]);
+        }
     }
 
     /**

@@ -21,6 +21,15 @@ class CreateJuriTable extends Migration
             $table->dateTime('updated_at')->nullable();
             $table->softDeletes();
         });
+        $juri= \App\Juri::create([
+          'id_user'    =>  3,
+          'id_lomba'   =>  '8'
+        ]);
+
+        $juri= \App\Juri::create([
+          'id_user'    =>  4,
+          'id_lomba'   =>  '4'
+        ]);
     }
 
     /**

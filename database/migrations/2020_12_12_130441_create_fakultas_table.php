@@ -20,6 +20,28 @@ class CreateFakultasTable extends Migration
             $table->dateTime('updated_at')->nullable();
             $table->softDeletes();
         });
+        $departements = [
+          "Fakultas Hukum",
+          "Fakultas Ilmu Sosial Dan Ilmu Politik",
+          "Fakultas Pertanian",
+          "Fakultas Ekonomi Dan Bisnis",
+          "Fakultas Keguruan Dan Ilmu Pendidikan",
+          "Fakultas Ilmu Budaya",
+          "Fakultas Teknologi Pertanian",
+          "Fakultas Kedokteran Gigi",
+          "Fakultas Ilmu Matematika Dan Pengetahuan Alam",
+          "Fakultas Kedokteran",
+          "Fakultas Kesehatan Masyarakat",
+          "Fakultas Teknik",
+          "Fakultas Farmasi",
+          "Fakultas Keperawatan",
+          "Fakultas Ilmu Komputer"
+        ];
+        foreach ($departements as $fakultas) {
+          $seed= \App\Fakultas::create([
+            'nama'            => $fakultas
+          ]);
+        }
     }
 
     /**
