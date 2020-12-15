@@ -2,6 +2,7 @@
 @section('title', "Tambah Lomba")
 
 @section('css')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 @endsection
 
 @section('content')
@@ -25,8 +26,8 @@
                       <input type="lomba" class="form-control" id="lomba" placeholder="Bidang Lomba">
                   </div>
                   <div class="form-group">
-                      <label class="text-label" for="flatpickrSample04">Batas Waktu Lomba</label>
-                      <input id="flatpickrSample04" type="hidden" class="form-control flatpickr-input" placeholder="Flatpickr date time example" data-toggle="flatpickr" data-flatpickr-enable-time="true" data-flatpickr-alt-format="F j, Y at H:i" data-flatpickr-date-format="Y-m-d H:i" value="2018-10-07 15:35"><input class="form-control flatpickr-input" placeholder="Flatpickr date time example" tabindex="0" type="text" readonly="readonly">
+                      <label for="">Batas Waktu Lomba</label>
+                      <input type="datetime-local" class="form-control" id="waktu_lomba" name="waktu_lomba">
                   </div>
                 </form>
             </div>
@@ -40,4 +41,5 @@
 @endsection
 
 @section('js')
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 @endsection

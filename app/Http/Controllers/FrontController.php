@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Jadwal;
+use App\Pengumuman;
 
 class FrontController extends Controller
 {

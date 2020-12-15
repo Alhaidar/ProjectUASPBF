@@ -32,11 +32,13 @@
                               <th style="width: 24px;"></th>
                           </tr>
                       </thead>
-                      <tbody class="list" id="staff02"><tr>
+                      <tbody class="list" id="staff02">
+                          @forelse($lomba as $l)
+                          <tr>
                               <td>
-                                  <span class="js-lists-values-employee-name">PKM T (Penerapan Teknologi)</span>
+                                  <strong>{{ $l->nama }}</strong>
                               </td>
-                              <td>12/03/2020</td>
+                              <td><small class="text-muted">{{ $l->batas_waktu }}</small></td>
                               <td><div class="dropdown ml-auto">
                                       <a href="#" data-toggle="dropdown" data-caret="false" class="text-muted" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                       <div class="dropdown-menu dropdown-menu-right" style="display: none;">
@@ -46,13 +48,19 @@
                                       </div>
                                   </div>
                               </td>
-                          </tr></tbody>
+                          </tr>
+                          @empty
+                            <td colspan="4">
+                                <h6 style="margin:20px auto 40px auto;text-align:center">Belum ada jadwal, lakukan pengumpulan untuk memperoleh jadwal.</h6>
+                            </td>
+                          @endforelse
+                      </tbody>
                   </table>
               </div>
           </div>
       </div>
   </div>
-  <a href="" class="btn btn-block btn-success">Tambah Bidang Lomba</a>
+  <a href="{{ route('lomba.create') }}" class="btn btn-block btn-success">Tambah Bidang Lomba</a>
 </div>
 @endsection
 

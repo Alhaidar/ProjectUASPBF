@@ -37,8 +37,12 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label class="text-label" for="flatpickrSample04">Tanggal Presentasi</label>
-                        <input id="flatpickrSample04" type="hidden" class="form-control flatpickr-input" placeholder="Flatpickr date time example" data-toggle="flatpickr" data-flatpickr-enable-time="true" data-flatpickr-alt-format="F j, Y at H:i" data-flatpickr-date-format="Y-m-d H:i" value="2018-10-07 15:35"><input class="form-control flatpickr-input" placeholder="Flatpickr date time example" tabindex="0" type="text" readonly="readonly">
+                        <label for="">Waktu Presentasi Dimulai</label>
+                        <input type="datetime-local" class="form-control" id="waktu_mulai_presentasi" name="waktu_presentasi">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Waktu Presentasi Selesai</label>
+                        <input type="datetime-local" class="form-control" id="waktu_selesai_presentasi" name="waktu_presentasi">
                     </div>
                 </form>
             </div>

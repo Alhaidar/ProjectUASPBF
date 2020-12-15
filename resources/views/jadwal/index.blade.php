@@ -27,9 +27,9 @@
                   <table class="table mb-0 thead-border-top-0">
                       <thead>
                           <tr>
-                              <th>Nama Ketua</th>
+                              <th style="width: 150px;">Nama Ketua</th>
                               <th style="width: %;">Judul Proposal</th>
-                              <th style="width: %;">Tanggal</th>
+                              <th style="width: 200px;">Tanggal</th>
                               <th style="width: 37px;">Status</th>
                               <th style="width: 24px;"></th>
                           </tr>
@@ -51,7 +51,7 @@
                               <td><div class="dropdown ml-auto">
                                       <a href="#" data-toggle="dropdown" data-caret="false" class="text-muted" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                       <div class="dropdown-menu dropdown-menu-left" style="display: none;">
-                                        <a class="dropdown-item" href="{{ route('jadwal.edit') }}">Ubah</a>
+                                        <a class="dropdown-item" href="#">Ubah</a>
                                           <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#">Hapus</a>
                                       </div>
