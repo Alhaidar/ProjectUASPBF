@@ -1,12 +1,7 @@
-@extends('layouts.front')
-@section('title', "Home")
+@extends('layouts.base')
+@section('title', "Ubah Lomba")
 
 @section('css')
-<style media="screen">
-  a{
-    text-decoration: none !important;
-  }
-</style>
 @endsection
 
 @section('content')
@@ -42,10 +37,7 @@
       <a href="" class="btn btn-warning">Ubah</a>
     </div>
 </div>
-
 @endsection
 
 @section('js')
-<script src="assets/vendor/flatpickr/flatpickr.min.js"></script>
-<script src="assets/js/flatpickr.js"></script>
 @endsection

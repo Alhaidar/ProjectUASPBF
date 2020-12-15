@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Jadwal;
+use App\Pengumuman;
 
 class JadwalController extends Controller
 {
@@ -13,7 +15,16 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        //
+      $jadwal     = Jadwal::whereNotNull('waktu_mulai')
+                    ->whereNotNull('waktu_berakhir')
+                    ->get();
+      $pengumuman = Pengumuman::all()
+                    ->sortByDesc("created_at")
+                    ->take(20);
+      if (\Auth::check()) {
+        return redirect()->route('jadwal.index');
+      }
+      return view('jadwal.index');
     }
 
     /**
@@ -23,8 +34,9 @@ class JadwalController extends Controller
      */
     public function create()
     {
-        //
+        return view('jadwal.add');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -56,7 +68,7 @@ class JadwalController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('jadwal.edit');
     }
 
     /**

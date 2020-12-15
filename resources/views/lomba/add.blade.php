@@ -1,18 +1,13 @@
-@extends('layouts.front')
-@section('title', "Home")
+@extends('layouts.base')
+@section('title', "Tambah Lomba")
 
 @section('css')
-<style media="screen">
-  a{
-    text-decoration: none !important;
-  }
-</style>
 @endsection
 
 @section('content')
 <div class="container page__heading-container">
     <div class="page__heading d-flex align-items-center justify-content-between">
-        <h1 class="m-0">Ubah Bidang Lomba</h1>
+        <h1 class="m-0">Tambah Bidang Lomba</h1>
     </div>
 </div>
 
@@ -20,8 +15,8 @@
     <div class="card card-form">
         <div class="row no-gutters">
             <div class="col-lg-3 card-body">
-                <p><strong class="headings-color">Form Ubah Bidang Lomba</strong></p>
-                <p class="text-muted">Bidang lomba yang dirubah harus sesuai dengan ketentuan bidang lomba yang tersedia dalam pedoman PKM terbaru.</p>
+                <p><strong class="headings-color">Form Tambah Bidang Lomba</strong></p>
+                <p class="text-muted">Bidang lomba yang ditambahkan harus sesuai dengan ketentuan bidang lomba yang tersedia dalam pedoman PKM terbaru.</p>
             </div>
             <div class="col-lg-9 card-form__body card-body">
                 <form>
@@ -39,13 +34,10 @@
     </div>
     <div class="text-right mb-5">
       <a href="" class="btn btn-danger">Batal</a>
-      <a href="" class="btn btn-warning">Ubah</a>
+      <a href="" class="btn btn-primary">Tambah</a>
     </div>
 </div>
-
 @endsection
 
 @section('js')
-<script src="assets/vendor/flatpickr/flatpickr.min.js"></script>
-<script src="assets/js/flatpickr.js"></script>
 @endsection

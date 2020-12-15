@@ -52,7 +52,7 @@
                         </li>
                         @if(Auth::user()->role == 'admin')
                         <li class="sidebar-menu-item ml-20">
-                            <a class="sidebar-menu-button" href="{{ route('jadwal.add') }}" style="padding-left:30px;background: rgba(0,0,0,0.05)">
+                            <a class="sidebar-menu-button" href="{{ route('jadwal.create') }}" style="padding-left:30px;background: rgba(0,0,0,0.05)">
                                 <span class="sidebar-menu-icon sidebar-menu-icon--left">
                                   <i class="fas fa-plus"></i><i class="fas fa-calendar-alt" style="font-size:10pt"></i>
                                 </span>
@@ -70,7 +70,7 @@
                         </li>
                         @if(Auth::user()->role == 'admin')
                         <li class="sidebar-menu-item ml-20">
-                            <a class="sidebar-menu-button" href="{{ route('pengumuman.add') }}" style="padding-left:30px;background: rgba(0,0,0,0.05)">
+                            <a class="sidebar-menu-button" href="{{ route('pengumuman.create') }}" style="padding-left:30px;background: rgba(0,0,0,0.05)">
                                 <span class="sidebar-menu-icon sidebar-menu-icon--left">
                                   <i class="fas fa-plus"></i><i class="fas fa-scroll" style="font-size:10pt"></i>
                                 </span>

@@ -40,7 +40,7 @@
                       <!-- <div class="home-banner text-white mb-4">
                       </div> -->
                       <div class="content-page" style="min-height:590px">
-
+                        @yield('content')
                       </div>
                       @include('includes.footer')
                   </div>
@@ -116,7 +116,7 @@
             </div>
         </div>
     </div>
-    @yield('content')
+
     <!-- App Settings FAB -->
     <div id="app-settings" style="display:none">
         <app-settings layout-active="default" :layout-location="{

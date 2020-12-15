@@ -2,8 +2,20 @@
 Route::get('/test', function () {
     return view('layouts.base');
 });
+
+// AMRI TEST
+// Route::get('/jadwal', function () {
+//     return view('jadwal.index');
+// });
+
+
 Route::group(['as' => 'front.'], function () {
     Route::get('/', 'FrontController@index')->name('index');
+
+    // //Amri test
+    // Route::get('/jadwal', 'JadwalController@index')->name('index');
+
+
     Route::get('/dasbor', 'FrontController@dasbor')->name('dasbor')->middleware('auth'); //dikasih middleware auth
 });
 Auth::routes();
