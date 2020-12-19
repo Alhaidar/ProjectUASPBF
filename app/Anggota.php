@@ -31,7 +31,7 @@ class Anggota extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_tim', 'id_fakultas', 'nama', 'nim', 'no_telp', 'email', 'alamat', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['id_tim', 'id_fakultas', 'nama', 'nim', 'no_telp', 'email', 'created_at', 'updated_at', 'deleted_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
