@@ -23,6 +23,7 @@
     <!-- ion Range Slider -->
     <link type="text/css" href="{{ asset('template/css/vendor-ion-rangeslider.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('template/css/vendor-ion-rangeslider.rtl.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('template/vendor/toastr.min.css') }}" rel="stylesheet">
 </head>
 
 <body class="layout-login-centered-boxed">
@@ -106,7 +107,41 @@
     <script src="{{ asset('template/js/dropdown.js') }}"></script>
     <script src="{{ asset('template/js/sidebar-mini.js') }}"></script>
     <script src="{{ asset('template/js/app.js') }}"></script>
-
+    <script src="{{ asset('template/vendor/toastr.min.js') }}"></script>
+    <script>
+      @if($message = Session::get('success'))
+      $(window).on("load",function(){
+      	window.setTimeout(function(){
+      		$.toast({
+      			heading: 'Sukses',
+      			text: '{!!$message!!}',
+      			position: 'top-right',
+            bgColor: '#18C967',
+      			loaderBg:'#A4DE02',
+      			icon: 'success',
+      			hideAfter: 3500,
+      			stack: 6
+      		});
+      	}, 1000);
+      });
+      @endif
+      @if ($message = Session::get('error'))
+      $(window).on("load",function(){
+      	window.setTimeout(function(){
+      		$.toast({
+      			heading: 'Kesalahan',
+      			text: '{!!$message!!}',
+      			position: 'top-right',
+            bgColor:'#E01A31',
+      			loaderBg:'#B53737',
+      			icon: 'error',
+      			hideAfter: 10000,
+      			stack: 6
+      		});
+      	}, 1000);
+      });
+      @endif
+  </script>
 </body>
 
 </html>

@@ -23,6 +23,7 @@
     <!-- ion Range Slider -->
     <link type="text/css" href="{{ asset('template/css/vendor-ion-rangeslider.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('template/css/vendor-ion-rangeslider.rtl.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('template/vendor/toastr.min.css') }}" rel="stylesheet">
     @yield('css')
 </head>
 <body class="layout-fluid layout-sticky-subnav">
@@ -161,7 +162,43 @@
     <script src="{{ asset('template/js/app.js') }}"></script>
     <!-- App Settings (safe to remove) -->
     <script src="{{ asset('template/js/app-settings.js') }}"></script>
+    <script src="{{ asset('template/vendor/toastr.min.js') }}"></script>
     @yield('js')
+    <script>
+      @if($message = Session::get('success'))
+      $(window).on("load",function(){
+      	window.setTimeout(function(){
+      		$.toast({
+      			heading: 'Sukses',
+      			text: '{!!$message!!}',
+      			position: 'top-right',
+            bgColor: '#18C967',
+      			loaderBg:'#A4DE02',
+      			icon: 'success',
+      			hideAfter: 3500,
+      			stack: 6
+      		});
+      	}, 1000);
+      });
+      @endif
+      @if ($message = Session::get('error'))
+      $(window).on("load",function(){
+      	window.setTimeout(function(){
+      		$.toast({
+      			heading: 'Kesalahan',
+      			text: '{!!$message!!}',
+      			position: 'top-right',
+            bgColor:'#E01A31',
+      			loaderBg:'#B53737',
+      			icon: 'error',
+      			hideAfter: 10000,
+
+      			stack: 6
+      		});
+      	}, 1000);
+      });
+      @endif
+  </script>
 </body>
 
 </html>

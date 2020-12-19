@@ -80,7 +80,7 @@
                         @endif
                     </ul>
                 </div>
-
+                @if(Auth::user()->role == 'peserta' || Auth::user()->role == 'juri')
                 <div class="sidebar-block p-0">
                     <div class="sidebar-heading">Kompetisi</div>
                     <ul class="sidebar-menu mt-0">
@@ -106,6 +106,7 @@
                         @endif
                     </ul>
                 </div>
+                @endif
                 @if(Auth::user()->role == 'admin')
                 <div class="sidebar-block p-0">
                     <div class="sidebar-heading">Pengelolaan</div>

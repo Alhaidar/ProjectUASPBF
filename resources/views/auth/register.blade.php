@@ -23,6 +23,7 @@
     <!-- ion Range Slider -->
     <link type="text/css" href="{{ asset('template/css/vendor-ion-rangeslider.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('template/css/vendor-ion-rangeslider.rtl.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('template/vendor/toastr.min.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
 </head>
 
@@ -182,9 +183,20 @@ $lomba = \App\Lomba::all();
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="text-label" for="nim">NIM Ketua:</label>
+                                <div class="input-group input-group-merge">
+                                    <input id="nim" type="number" name="nim[]" class="form-control form-control-prepended" placeholder="Nomor Induk Mahasiswa" required autofocus>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span class="far fa-id-card"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="text-label" for="telp">Nomor Telepon Ketua:</label>
                                 <div class="input-group input-group-merge">
-                                    <input id="telp" type="text" name="no_telp[]" class="form-control form-control-prepended" placeholder="Nomor Telepon Ketua" value="{{ old('no_telp') }}" required autofocus>
+                                    <input id="telp" type="number" name="no_telp[]" class="form-control form-control-prepended" placeholder="Nomor Telepon Ketua" value="{{ old('no_telp') }}" required autofocus>
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <span class="fas fa-phone"></span>
@@ -212,9 +224,9 @@ $lomba = \App\Lomba::all();
                               <div class="page-separator__text">Anggota 1</div>
                             </div>
                             <div class="form-group">
-                                <label class="text-label" for="nama">Nama Anggota 1:</label>
+                                <label class="text-label" for="nama_1">Nama Anggota 1:</label>
                                 <div class="input-group input-group-merge">
-                                    <input id="nama" type="text" name="nama[]" class="form-control form-control-prepended" placeholder="Nama Lengkap" required autofocus>
+                                    <input id="nama_1" type="text" name="nama[]" class="form-control form-control-prepended" placeholder="Nama Lengkap" required autofocus>
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <span class="far fa-user"></span>
@@ -223,9 +235,20 @@ $lomba = \App\Lomba::all();
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="text-label" for="telp">Nomor Telepon Anggota 1:</label>
+                                <label class="text-label" for="nim_1">NIM Anggota 1:</label>
                                 <div class="input-group input-group-merge">
-                                    <input id="telp" type="text" name="no_telp[]" class="form-control form-control-prepended" placeholder="Nomor Telepon Anggota 1" required autofocus>
+                                    <input id="nim_1" type="number" name="nim[]" class="form-control form-control-prepended" placeholder="Nomor Induk Mahasiswa" required autofocus>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span class="far fa-id-card"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-label" for="telp_1">Nomor Telepon Anggota 1:</label>
+                                <div class="input-group input-group-merge">
+                                    <input id="telp_1" type="number" name="no_telp[]" class="form-control form-control-prepended" placeholder="Nomor Telepon Anggota 1" required autofocus>
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <span class="fas fa-phone"></span>
@@ -234,9 +257,9 @@ $lomba = \App\Lomba::all();
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="text-label" for="email_2">Alamat Surel Anggota 1:</label>
+                                <label class="text-label" for="email_1">Alamat Surel Anggota 1:</label>
                                 <div class="input-group input-group-merge">
-                                    <input id="email" type="email" name="email" class="form-control form-control-prepended" placeholder="fulan@mail.id" required autocomplete="email">
+                                    <input id="email_1" type="email" name="email[]" class="form-control form-control-prepended" placeholder="fulan@mail.id" required autocomplete="email">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <span class="far fa-envelope"></span>
@@ -245,9 +268,9 @@ $lomba = \App\Lomba::all();
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="text-label" for="faculty">Fakultas Anggota 1:</label>
+                                <label class="text-label" for="faculty_1">Fakultas Anggota 1:</label>
                                 <div class="input-group input-group-merge">
-                                    <select id="faculty" class="form-control form-control-prepended" name="fakultas[]" required>
+                                    <select id="faculty_1" class="form-control form-control-prepended" name="fakultas[]" required>
                                       <option value="0" selected disabled>Pilih Fakultas:</option>
                                       @foreach ($fakultas as $key => $value)
                                         <option value="{{$value->id}}">{{$value->nama}}</option>
@@ -264,9 +287,9 @@ $lomba = \App\Lomba::all();
                               <div class="page-separator__text">Anggota 2</div>
                             </div>
                             <div class="form-group">
-                                <label class="text-label" for="nama">Nama Anggota 2: <small>(Tidak Wajib)</small></label>
+                                <label class="text-label" for="nama_2">Nama Anggota 2: <small>(Tidak Wajib)</small></label>
                                 <div class="input-group input-group-merge">
-                                    <input id="nama" type="text" name="nama[]" class="form-control form-control-prepended" placeholder="Nama Lengkap" autofocus>
+                                    <input id="nama_2" type="text" name="nama[]" class="form-control form-control-prepended" placeholder="Nama Lengkap" autofocus>
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <span class="far fa-user"></span>
@@ -275,9 +298,20 @@ $lomba = \App\Lomba::all();
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="text-label" for="telp">Nomor Telepon Anggota 2: <small>(Tidak Wajib)</small></label>
+                                <label class="text-label" for="nim_2">NIM Anggota 2:</label>
                                 <div class="input-group input-group-merge">
-                                    <input id="telp" type="text" name="no_telp[]" class="form-control form-control-prepended" placeholder="Nomor Telepon Anggota 2" autofocus>
+                                    <input id="nim_2" type="number" name="nim[]" class="form-control form-control-prepended" placeholder="Nomor Induk Mahasiswa" required autofocus>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <span class="far fa-id-card"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="text-label" for="telp_2">Nomor Telepon Anggota 2: <small>(Tidak Wajib)</small></label>
+                                <div class="input-group input-group-merge">
+                                    <input id="telp_2" type="number" name="no_telp[]" class="form-control form-control-prepended" placeholder="Nomor Telepon Anggota 2" autofocus>
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <span class="fas fa-phone"></span>
@@ -288,7 +322,7 @@ $lomba = \App\Lomba::all();
                             <div class="form-group">
                                 <label class="text-label" for="email_2">Alamat Surel Anggota 2: <small>(Tidak Wajib)</small></label>
                                 <div class="input-group input-group-merge">
-                                    <input id="email" type="email" name="email" class="form-control form-control-prepended" placeholder="fulan@mail.id" autocomplete="email">
+                                    <input id="email_2" type="email" name="email[]" class="form-control form-control-prepended" placeholder="fulan@mail.id" autocomplete="email">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <span class="far fa-envelope"></span>
@@ -297,9 +331,9 @@ $lomba = \App\Lomba::all();
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="text-label" for="faculty">Fakultas Anggota 2: <small>(Tidak Wajib)</small></label>
+                                <label class="text-label" for="faculty_2">Fakultas Anggota 2: <small>(Tidak Wajib)</small></label>
                                 <div class="input-group input-group-merge">
-                                    <select id="faculty" class="form-control form-control-prepended" name="fakultas[]">
+                                    <select id="faculty_2" class="form-control form-control-prepended" name="fakultas[]">
                                       <option value="0" selected disabled>Pilih Fakultas:</option>
                                       @foreach ($fakultas as $key => $value)
                                         <option value="{{$value->id}}">{{$value->nama}}</option>
@@ -350,6 +384,41 @@ $lomba = \App\Lomba::all();
       $('#smartwizard').smartWizard();
     });
     </script>
+    <script src="{{ asset('template/vendor/toastr.min.js') }}"></script>
+    <script>
+      @if($message = Session::get('success'))
+      $(window).on("load",function(){
+      	window.setTimeout(function(){
+      		$.toast({
+      			heading: 'Sukses',
+      			text: '{!!$message!!}',
+      			position: 'top-right',
+            bgColor: '#18C967',
+      			loaderBg:'#A4DE02',
+      			icon: 'success',
+      			hideAfter: 3500,
+      			stack: 6
+      		});
+      	}, 1000);
+      });
+      @endif
+      @if ($message = Session::get('error'))
+      $(window).on("load",function(){
+      	window.setTimeout(function(){
+      		$.toast({
+      			heading: 'Kesalahan',
+      			text: '{!!$message!!}',
+      			position: 'top-right',
+            bgColor:'#E01A31',
+      			loaderBg:'#B53737',
+      			icon: 'error',
+      			hideAfter: 10000,
+      			stack: 6
+      		});
+      	}, 1000);
+      });
+      @endif
+  </script>
 </body>
 
 </html>
