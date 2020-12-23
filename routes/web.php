@@ -13,6 +13,8 @@ Auth::routes();
 Route::resource('akun',"AkunController")->middleware('auth');
 Route::get('/jadwal', 'JadwalController@index')->name('jadwal.index')->middleware('auth');
 Route::get('/pengumuman', 'PengumumanController@index')->name('pengumuman.index')->middleware('auth');
+Route::get('/fakultas', 'FakultasController@index')->name('fakultas.index')->middleware('auth');
+Route::get('/lomba', 'LombaController@index')->name('lomba.index')->middleware('auth');
 // JURI //
 Route::resource('submisi',"SubmisiController")->middleware(['auth', 'CekRole:juri']);
 // ADMIN //
@@ -22,8 +24,20 @@ Route::group(['middleware' => ['auth','CekRole:peserta']],function(){
 });
 // ADMIN //
 Route::group(['middleware' => ['auth','CekRole:admin']],function(){
-    Route::resource('fakultas',"FakultasController");
-    Route::resource('lomba',"LombaController");
+    Route::group(['as' => 'fakultas.' , 'prefix' => 'fakultas'], function () {
+        Route::get('/tambah',        'FakultasController@create')->name('create')->middleware(['auth', 'CekRole:admin']);
+        Route::post('/tambah',       'FakultasController@store')->name('store')->middleware(['auth', 'CekRole:admin']);
+        Route::get('/{id}/edit',     'FakultasController@edit')->name('edit')->middleware(['auth', 'CekRole:admin']);
+        Route::post('/{id}/edit',   'FakultasController@update')->name('update')->middleware(['auth', 'CekRole:admin']);
+        Route::get('/{id}/hapus', 'FakultasController@destroy')->name('destroy')->middleware(['auth', 'CekRole:admin']);
+    });
+    Route::group(['as' => 'lomba.' , 'prefix' => 'lomba'], function () {
+        Route::get('/tambah',        'LombaController@create')->name('create')->middleware(['auth', 'CekRole:admin']);
+        Route::post('/tambah',       'LombaController@store')->name('store')->middleware(['auth', 'CekRole:admin']);
+        Route::get('/{id}/edit',     'LombaController@edit')->name('edit')->middleware(['auth', 'CekRole:admin']);
+        Route::post('/{id}/edit',   'LombaController@update')->name('update')->middleware(['auth', 'CekRole:admin']);
+        Route::get('/{id}/hapus', 'LombaController@destroy')->name('destroy')->middleware(['auth', 'CekRole:admin']);
+    });
     Route::group(['as' => 'jadwal.' , 'prefix' => 'jadwal'], function () {
         Route::get('/tambah',        'JadwalController@create')->name('create')->middleware(['auth', 'CekRole:admin']);
         Route::post('/tambah',       'JadwalController@store')->name('store')->middleware(['auth', 'CekRole:admin']);
@@ -35,9 +49,11 @@ Route::group(['middleware' => ['auth','CekRole:admin']],function(){
         Route::get('/tambah',        'PengumumanController@create')->name('create')->middleware(['auth', 'CekRole:admin']);
         Route::post('/tambah',       'PengumumanController@store')->name('store')->middleware(['auth', 'CekRole:admin']);
         Route::get('/{id}/edit',     'PengumumanController@edit')->name('edit')->middleware(['auth', 'CekRole:admin']);
-        Route::patch('/{id}/edit',   'PengumumanController@update')->name('update')->middleware(['auth', 'CekRole:admin']);
-        Route::delete('/{id}/hapus', 'PengumumanController@destroy')->name('destroy')->middleware(['auth', 'CekRole:admin']);
+        Route::post('/{id}/edit',   'PengumumanController@update')->name('update')->middleware(['auth', 'CekRole:admin']);
+        Route::get('/{id}/hapus', 'PengumumanController@destroy')->name('destroy')->middleware(['auth', 'CekRole:admin']);
     });
 });
 // Route::resource('jadwal',"JadwalController"); //Partial
 // Route::resource('pengumuman',"PengumumanController"); //Partial
+// Route::resource('fakultas',"FakultasController"); //Partial
+// Route::resource('lomba',"LombaController"); //Partial

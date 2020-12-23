@@ -18,27 +18,28 @@
     <div class="card card-form">
         <div class="row no-gutters">
             <div class="col-lg-12 card-form__body card-body">
-                <form>
+                <form action="{{route('pengumuman.store')}}" method="post">
+                  {{ csrf_field() }}
                   <div class="form-group">
                       <label for="">Judul Pengumuman</label>
-                      <input type="lomba" class="form-control" id="judul" placeholder="Judul">
+                      <input type="lomba" class="form-control" id="judul" placeholder="Judul" name="judul">
                   </div>
                   <div class="form-group">
                       <label for="">Konten</label>
-                      <input type="text" class="form-control" id="konten" placeholder="Isi Konten">
+                      <input type="text" class="form-control" id="konten" placeholder="Isi Konten" name="konten">
                   </div>
                   <div class="form-group">
                       <label for="">Thumbnail</label>
-                      <input type="text" class="form-control" id="tumbnail" placeholder="Thumbnail">
+                      <input type="text" class="form-control" id="tumbnail" placeholder="Thumbnail" name="thumbnail">
                   </div>
-                </form>
             </div>
         </div>
     </div>
     <div class="text-right mb-5">
-      <a href="" class="btn btn-danger">Batal</a>
-      <a href="" class="btn btn-primary">Tambah</a>
+      <a href="{{route('pengumuman.index')}}" class="btn btn-danger">Batal</a>
+      <button type="submit"class="btn btn-primary">Submit</button>
     </div>
+    </form>
 </div>
 
 

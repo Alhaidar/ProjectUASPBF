@@ -19,23 +19,27 @@
                 <p class="text-muted">Bidang lomba yang dirubah harus sesuai dengan ketentuan bidang lomba yang tersedia dalam pedoman PKM terbaru.</p>
             </div>
             <div class="col-lg-9 card-form__body card-body">
-                <form>
+                <form action="{{route('lomba.update',$lomba->id)}}" method="post">
+                  {{ csrf_field() }}
                   <div class="form-group">
                       <label for="">Nama Bidang Lomba</label>
-                      <input type="lomba" class="form-control" id="lomba" placeholder="Bidang Lomba">
+                      <input type="lomba" class="form-control" id="lomba" placeholder="Bidang Lomba" name="nama" value="{{$lomba->nama}}">
                   </div>
                   <div class="form-group">
                       <label class="text-label" for="flatpickrSample04">Batas Waktu Lomba</label>
-                      <input id="flatpickrSample04" type="hidden" class="form-control flatpickr-input" placeholder="Flatpickr date time example" data-toggle="flatpickr" data-flatpickr-enable-time="true" data-flatpickr-alt-format="F j, Y at H:i" data-flatpickr-date-format="Y-m-d H:i" value="2018-10-07 15:35"><input class="form-control flatpickr-input" placeholder="Flatpickr date time example" tabindex="0" type="text" readonly="readonly">
+                      <input type="datetime-local" class="form-control" id="waktu_lomba" name="batas_waktu" value="{{$lomba->batas_waktu}}">
+                      <!-- <input id="flatpickrSample04" type="hidden" class="form-control flatpickr-input" placeholder="Flatpickr date time example" data-toggle="flatpickr" data-flatpickr-enable-time="true"
+                      data-flatpickr-alt-format="F j, Y at H:i" data-flatpickr-date-format="Y-m-d H:i" value="{{$lomba->batas_waktu}}" name="batas_waktu"><input class="form-control flatpickr-input"
+                      placeholder="Flatpickr date time example" tabindex="0" type="text" readonly="readonly"> -->
                   </div>
-                </form>
             </div>
         </div>
     </div>
     <div class="text-right mb-5">
-      <a href="" class="btn btn-danger">Batal</a>
-      <a href="" class="btn btn-warning">Ubah</a>
+      <a href="/lomba" class="btn btn-danger">Batal</a>
+      <button type="submit"class="btn btn-primary">Ubah</button>
     </div>
+    </form>
 </div>
 @endsection
 

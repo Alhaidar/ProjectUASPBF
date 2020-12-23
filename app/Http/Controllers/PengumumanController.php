@@ -31,7 +31,12 @@ class PengumumanController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $pengumuman = new Pengumuman;
+        $pengumuman->judul = $request->judul;
+        $pengumuman->konten = $request->konten;
+        $pengumuman->thumbnail = $request->thumbnail;
+        $pengumuman->save();
+        return redirect('/pengumuman')->with(['success' => 'Berhasil di input']);
     }
 
 
@@ -43,18 +48,23 @@ class PengumumanController extends Controller
 
     public function edit($id)
     {
-        return view('pengumuman.edit');
+        $pengumuman = Pengumuman::find($id);
+        return view('pengumuman.edit',['pengumuman'=>$pengumuman]);
     }
 
 
     public function update(Request $request, $id)
     {
-        //
+        $pengumuman = Pengumuman::find($id);
+        $pengumuman->update($request->all());
+        return redirect('/pengumuman')->with(['success' => 'Berhasil di ubah']);
     }
 
 
     public function destroy($id)
     {
-        //
+      $pengumuman = Pengumuman::find($id);
+      $pengumuman->delete();
+      return redirect('/pengumuman')->with(['success' => 'Berhasil di hapus']);
     }
 }

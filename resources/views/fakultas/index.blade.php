@@ -48,9 +48,9 @@
                                         <i class="material-icons">more_vert</i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#">Edit</a>
+                                        <a class="dropdown-item" href="{{route('fakultas.edit',$f->id)}}">Edit</a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item text-danger" href="#">Hapus</a>
+                                        <a class="dropdown-item text-danger" href="{{route('fakultas.destroy',$f->id)}}">Hapus</a>
                                     </div>
                                 </div>
                             </div>

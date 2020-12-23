@@ -19,13 +19,14 @@
                 <p class="text-muted">Fakultas yang ditambahkan harus berasal dari Universitas Jember dan mengikuti kegiatan PKM Raya.</p>
             </div>
             <div class="col-lg-9 card-form__body card-body">
-                <form>
+                <form action="{{route('fakultas.update',$fakultas->id)}}" method="post">
+                  {{ csrf_field() }}
                   <div class="form-group">
                       <label for="">Nama Fakultas</label>
-                      <input type="lomba" class="form-control" id="fakultas" placeholder="Nama Fakultas">
+                      <input type="lomba" class="form-control" id="fakultas" placeholder="Nama Fakultas" value="{{$fakultas->nama}}" name="nama">
                   </div>
-                  <a href="" class="btn btn-danger">Batal</a>
-                  <a href="" class="btn btn-warning">Ubah</a>
+                  <a href="/fakultas" class="btn btn-danger">Batal</a>
+                  <button type="submit"class="btn btn-primary">Ubah</button>
                 </form>
             </div>
         </div>

@@ -17,7 +17,7 @@ class CreatePengumumanTable extends Migration
             $table->integer('id', true);
             $table->string('judul', 128)->nullable();
             $table->text('konten')->nullable();
-            $table->string('tumbnail', 128)->nullable();
+            $table->string('thumbnail', 128)->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->dateTime('updated_at')->nullable();
             $table->softDeletes();
