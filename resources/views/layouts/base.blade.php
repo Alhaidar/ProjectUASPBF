@@ -24,6 +24,11 @@
     <link type="text/css" href="{{ asset('template/css/vendor-ion-rangeslider.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('template/css/vendor-ion-rangeslider.rtl.css') }}" rel="stylesheet">
     <link type="text/css" href="{{ asset('template/vendor/toastr.min.css') }}" rel="stylesheet">
+    <!-- Quill Theme -->
+    <link type="text/css" href="{{ asset('template/css/vendor-quill.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('template/css/vendor-quill.rtl.css') }}" rel="stylesheet">
+    <!-- Dropzone -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" rel="stylesheet">
     @yield('css')
 </head>
 
@@ -37,7 +42,6 @@
         <div class="mdk-header-layout__content">
             <div class="mdk-drawer-layout js-mdk-drawer-layout" data-push data-responsive-width="992px">
                 <div class="mdk-drawer-layout__content page" style="padding-bottom:0">
-                  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css') }}" rel="stylesheet">
                       <!-- <div class="home-banner text-white mb-4">
                       </div> -->
                       <div class="content-page" style="min-height:590px">
@@ -48,10 +52,6 @@
                   @include('includes.basenav')
                   <!-- // END drawer-layout__content -->
                 </div>
-                <script src="https://unpkg.com/aos@2.3.1/dist/aos.js') }}"></script>
-                <script>
-                    AOS.init();
-                </script>
             </div>
             <!-- // END drawer-layout -->
         </div>
@@ -150,6 +150,14 @@
     <!-- App Settings (safe to remove) -->
     <script src="{{ asset('template/js/app-settings.js') }}"></script>
     <script src="{{ asset('template/vendor/toastr.min.js') }}"></script>
+    <!-- List.js -->
+    <script src="{{ asset('template/vendor/list.min.js') }}"></script>
+    <script src="{{ asset('template/js/list.js') }}"></script>
+    <!-- Quill -->
+    <script src="{{ asset('template/vendor/quill.min.js') }}"></script>
+    <script src="{{ asset('template/js/quill.js') }}"></script>
+    <!-- Dropzone -->
+    <script src="{{ asset('js/dropzone-init.js')}} "></script>
     @yield('js')
     <script>
       @if($message = Session::get('success'))

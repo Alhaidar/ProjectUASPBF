@@ -7,11 +7,14 @@
 @section('content')
 <div class="container page__heading-container">
     <div class="page__heading d-flex align-items-center justify-content-between">
-        <h1 class="m-0">Tambah Pengumuman</h1>
+        <h1 class="m-0">Ubah Pengumuman</h1>
     </div>
 </div>
 
 <div class="container page__container">
+    <div class="mb-2">
+      <a href="{{route('pengumuman.index')}}" class="btn btn-light"><i class="fas fa-chevron-left"></i> Batal</a>
+    </div>
     <div class="card card-form">
         <div class="row no-gutters">
             <div class="col-lg-12 card-form__body card-body">
@@ -23,20 +26,17 @@
                   </div>
                   <div class="form-group">
                       <label for="">Konten</label>
-                      <input type="text" class="form-control" id="konten" placeholder="Isi Konten" name="konten" value="{{$pengumuman->konten}}">
+                      <textarea class="form-control" data-toggle="quill" data-quill-placeholder="Konten isi pengumuman" name="konten" id="konten" rows="3">{{$pengumuman->konten}}</textarea>
                   </div>
                   <div class="form-group">
-                      <label for="">Thumbnail</label>
-                      <input type="text" class="form-control" id="tumbnail" placeholder="Thumbnail" name="thumbnail" value="{{$pengumuman->thumbnail}}">
+                        <label for="thumbnail">Gambar Sampul</label><br>
+                      <input type="file" name="thumbnail" id="tumbnail" class="dropzone" data-default-file="{{asset($pengumuman->thumbnail)}}"/>
                   </div>
             </div>
         </div>
+        <button type="submit"class="btn btn-success">Simpan</button>
+      </form>
     </div>
-    <div class="text-right mb-5">
-      <a href="{{route('pengumuman.index')}}" class="btn btn-danger">Batal</a>
-      <button type="submit"class="btn btn-primary">Submit</button>
-    </div>
-    </form>
 </div>
 @endsection
 

@@ -12,6 +12,9 @@
 </div>
 
 <div class="container page__container">
+    <div class="mb-2">
+      <a href="{{route('fakultas.index')}}" class="btn btn-light"><i class="fas fa-chevron-left"></i> Batal</a>
+    </div>
     <div class="card card-form">
         <div class="row no-gutters">
             <div class="col-lg-3 card-body">
@@ -25,12 +28,11 @@
                       <label for="">Nama Fakultas</label>
                       <input type="lomba" class="form-control" id="fakultas" placeholder="Nama Fakultas" value="{{$fakultas->nama}}" name="nama">
                   </div>
-                  <a href="/fakultas" class="btn btn-danger">Batal</a>
-                  <button type="submit"class="btn btn-primary">Ubah</button>
-                </form>
             </div>
         </div>
-    </div>
+      <button type="submit"class="btn btn-success">Simpan</button>
+    </form>
+  </div>
 </div>
 @endsection
 

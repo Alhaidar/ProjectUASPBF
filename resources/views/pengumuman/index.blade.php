@@ -6,9 +6,9 @@
 
 @section('content')
   <div class="container page__heading-container">
-    <div class="page__heading d-flex align-items-center justify-content-between mb-0">
-        <h1 class="m-0">Pengumuman</h1>
-    </div>
+      <div class="page__heading d-flex flex-column flex-md-row align-items-center justify-content-center justify-content-lg-between text-center text-lg-left">
+          <h1 class="m-lg-0">Pengumuman</h1>
+      </div>
   </div>
 
 
@@ -17,15 +17,16 @@
     <form action="#" class="mb-2">
         <div class="d-flex">
             <div class="search-form mr-3 search-form--light">
-                <input type="text" class="form-control" placeholder="Cari Fakultas" id="searchSample02">
+                <input type="text" class="form-control" placeholder="Cari Pengumuman" id="searchSample02">
                 <button class="btn" type="button"><i class="material-icons">search</i></button>
             </div>
-
+            @if(Auth::user()->role == 'admin')
             <div class="form-inline ml-auto">
                 <div class="form-group">
                   <a href="{{ route('pengumuman.create') }}" class="btn btn-success ml-lg-3">Tambah Pengumuman <i class="material-icons">add</i></a>
                 </div>
             </div>
+            @endif
         </div>
     </form>
 
@@ -57,7 +58,7 @@
                                 <i class="material-icons">more_vert</i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="{{route('pengumuman.edit',$p->id)}}">Edit</a>
+                                <a class="dropdown-item" href="{{route('pengumuman.edit',$p->id)}}">Ubah</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item text-danger" href="{{route('pengumuman.destroy',$p->id)}}">Hapus</a>
                             </div>

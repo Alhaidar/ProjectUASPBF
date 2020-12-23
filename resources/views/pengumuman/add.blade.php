@@ -2,9 +2,6 @@
 @section('title', "Tambah Pengumuman")
 
 @section('css')
-<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-<link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
-
 @endsection
 
 @section('content')
@@ -15,6 +12,9 @@
 </div>
 
 <div class="container page__container">
+    <div class="mb-2">
+      <a href="{{route('pengumuman.index')}}" class="btn btn-light"><i class="fas fa-chevron-left"></i> Batal</a>
+    </div>
     <div class="card card-form">
         <div class="row no-gutters">
             <div class="col-lg-12 card-form__body card-body">
@@ -26,27 +26,21 @@
                   </div>
                   <div class="form-group">
                       <label for="">Konten</label>
-                      <input type="text" class="form-control" id="konten" placeholder="Isi Konten" name="konten">
+                      <textarea class="form-control" data-toggle="quill" data-quill-placeholder="Konten isi pengumuman" name="konten" id="konten" rows="3"></textarea>
                   </div>
                   <div class="form-group">
-                      <label for="">Thumbnail</label>
-                      <input type="text" class="form-control" id="tumbnail" placeholder="Thumbnail" name="thumbnail">
+                      <label for="thumbnail">Gambar Sampul</label><br>
+                      <input type="file" name="thumbnail" id="tumbnail" class="dropzone"/>
                   </div>
             </div>
         </div>
+        <button type="submit"class="btn btn-success">Tambah</button>
+      </form>
     </div>
-    <div class="text-right mb-5">
-      <a href="{{route('pengumuman.index')}}" class="btn btn-danger">Batal</a>
-      <button type="submit"class="btn btn-primary">Submit</button>
-    </div>
-    </form>
 </div>
 
 
 @endsection
 
 @section('js')
-<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
-
 @endsection

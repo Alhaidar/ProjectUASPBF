@@ -2,6 +2,7 @@
 @section('title', "Ubah Lomba")
 
 @section('css')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 @endsection
 
 @section('content')
@@ -12,6 +13,9 @@
 </div>
 
 <div class="container page__container">
+    <div class="mb-2">
+      <a href="{{route('lomba.index')}}" class="btn btn-light"><i class="fas fa-chevron-left"></i> Batal</a>
+    </div>
     <div class="card card-form">
         <div class="row no-gutters">
             <div class="col-lg-3 card-body">
@@ -22,26 +26,32 @@
                 <form action="{{route('lomba.update',$lomba->id)}}" method="post">
                   {{ csrf_field() }}
                   <div class="form-group">
-                      <label for="">Nama Bidang Lomba</label>
+                      <label for="lomba">Nama Bidang Lomba</label>
                       <input type="lomba" class="form-control" id="lomba" placeholder="Bidang Lomba" name="nama" value="{{$lomba->nama}}">
                   </div>
                   <div class="form-group">
-                      <label class="text-label" for="flatpickrSample04">Batas Waktu Lomba</label>
-                      <input type="datetime-local" class="form-control" id="waktu_lomba" name="batas_waktu" value="{{$lomba->batas_waktu}}">
-                      <!-- <input id="flatpickrSample04" type="hidden" class="form-control flatpickr-input" placeholder="Flatpickr date time example" data-toggle="flatpickr" data-flatpickr-enable-time="true"
-                      data-flatpickr-alt-format="F j, Y at H:i" data-flatpickr-date-format="Y-m-d H:i" value="{{$lomba->batas_waktu}}" name="batas_waktu"><input class="form-control flatpickr-input"
-                      placeholder="Flatpickr date time example" tabindex="0" type="text" readonly="readonly"> -->
+                      <label for="date-time">Batas Waktu Lomba</label>
+                      <input type="datetime-local" class="form-control" id="date-time" name="batas_waktu" value="{{$lomba->batas_waktu}}">
                   </div>
             </div>
-        </div>
+          </div>
+        <button type="submit"class="btn btn-success">Simpan</button>
+      </form>
     </div>
-    <div class="text-right mb-5">
-      <a href="/lomba" class="btn btn-danger">Batal</a>
-      <button type="submit"class="btn btn-primary">Ubah</button>
-    </div>
-    </form>
 </div>
 @endsection
 
 @section('js')
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr@4.6.8/dist/l10n/id.js"></script>
+<script src="{{ asset('js/flatpickr-init.js')}}"></script>
+<script type="text/javascript">
+flatpickr('#date-time', {
+    "locale": "id",
+    "enableTime": true,
+    "defaultDate": "{{$lomba->batas_waktu}}",
+    "minDate": "today",
+    "defaultHour": "{{$lomba->batas_waktu}}",
+});
+</script>
 @endsection

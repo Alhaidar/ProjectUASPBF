@@ -13,6 +13,9 @@
 </div>
 
 <div class="container page__container">
+    <div class="mb-2">
+      <a href="{{route('lomba.index')}}" class="btn btn-light"><i class="fas fa-chevron-left"></i> Batal</a>
+    </div>
     <div class="card card-form">
         <div class="row no-gutters">
             <div class="col-lg-3 card-body">
@@ -23,24 +26,23 @@
                 <form action="{{route('lomba.store')}}" method="post">
                   {{ csrf_field() }}
                   <div class="form-group">
-                      <label for="">Nama Bidang Lomba</label>
+                      <label for="lomba">Nama Bidang Lomba</label>
                       <input type="lomba" class="form-control" id="lomba" placeholder="Bidang Lomba" name="bidang_lomba">
                   </div>
                   <div class="form-group">
-                      <label for="">Batas Waktu Lomba</label>
-                      <input type="datetime-local" class="form-control" id="waktu_lomba" name="waktu_lomba">
+                      <label for="date-time">Batas Waktu Lomba</label>
+                      <input type="datetime-local" class="form-control" id="date-time" name="batas_waktu">
                   </div>
             </div>
-        </div>
+          </div>
+        <button type="submit"class="btn btn-success">Tambah</button>
+      </form>
     </div>
-    <div class="text-right mb-5">
-      <a href="/lomba" class="btn btn-danger">Batal</a>
-      <button type="submit"class="btn btn-primary">Tambah</button>
-    </div>
-    </form>
 </div>
 @endsection
 
 @section('js')
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr@4.6.8/dist/l10n/id.js"></script>
+<script src="{{ asset('js/flatpickr-init.js')}}"></script>
 @endsection
