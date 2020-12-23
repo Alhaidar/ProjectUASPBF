@@ -18,6 +18,6 @@ class CekRole
       if (in_array($request->user()->role,$roles)) {
         return $next($request);
       }
-        return redirect('/');
+        return redirect()->route('front.dasbor')->with('error', 'Tidak memiliki akses pada fitur ini');
     }
 }

@@ -17,7 +17,7 @@ class Pengumuman extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'pengumuman';
@@ -25,6 +25,6 @@ class Pengumuman extends Model
     /**
      * @var array
      */
-    protected $fillable = ['judul', 'konten', 'tumbnail', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['judul', 'konten', 'thumbnail', 'created_at', 'updated_at', 'deleted_at'];
 
 }

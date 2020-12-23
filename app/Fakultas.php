@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $created_at
  * @property string $updated_at
  * @property string $deleted_at
- * @property Anggotum[] $anggotas
+ * @property Anggota[] $anggotas
  */
 class Fakultas extends Model
 {
@@ -24,6 +24,6 @@ class Fakultas extends Model
      */
     public function anggotas()
     {
-        return $this->hasMany('App\Anggotum', 'id_fakultas');
+        return $this->hasMany('App\Anggota', 'id_fakultas');
     }
 }

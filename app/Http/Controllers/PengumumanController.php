@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pengumuman;
+use Illuminate\Support\Facades\Storage;
+use App\helpers\storageHelper as SH;
 
 class PengumumanController extends Controller
 {
@@ -14,7 +16,7 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-      $pengumuman     = Pengumuman::whereNotNull('created_at')
+      $pengumuman   = Pengumuman::whereNotNull('created_at')
                     ->whereNotNull('konten')
                     ->whereNotNull('judul')
                     ->get();
@@ -31,10 +33,15 @@ class PengumumanController extends Controller
 
     public function store(Request $request)
     {
+        $images = 'image/default_tumbnail.png';
+        $filekind = 'thumbnail';
         $pengumuman = new Pengumuman;
         $pengumuman->judul = $request->judul;
         $pengumuman->konten = $request->konten;
-        $pengumuman->thumbnail = $request->thumbnail;
+        if ($request->file($filekind)) {
+            $images = SH::upload($request, $filekind);
+        }
+        $pengumuman->thumbnail = $images;
         $pengumuman->save();
         return redirect('/pengumuman')->with(['success' => 'Berhasil di input']);
     }
@@ -49,14 +56,26 @@ class PengumumanController extends Controller
     public function edit($id)
     {
         $pengumuman = Pengumuman::find($id);
+        if(is_null($pengumuman)){
+            return redirect('/pengumuman')->with(['error' => 'Pengumuman tidak ditemukan']);
+        }
         return view('pengumuman.edit',['pengumuman'=>$pengumuman]);
     }
 
 
     public function update(Request $request, $id)
     {
+        $images = 'image/default_tumbnail.png';
+        $filekind = 'thumbnail';
         $pengumuman = Pengumuman::find($id);
-        $pengumuman->update($request->all());
+        if ($request->file('thumbnail')) {
+            $images = SH::upload($request, $filekind);
+        }
+        $pengumuman->update([
+          'judul'      => $request->judul,
+          'konten'     => $request->konten,
+          'thumbnail'  => $images
+        ]);
         return redirect('/pengumuman')->with(['success' => 'Berhasil di ubah']);
     }
 

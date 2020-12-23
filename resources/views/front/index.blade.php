@@ -18,9 +18,14 @@
         <div class="col-lg-3 col-md-4 card-group-row__col">
             <div class="card card-group-row__card ">
                 <div class="card-body d-flex flex-column">
-                    <img src="{{ asset($p->tumbnail) }}" style="width:100%; margin-bottom:10px">
+                  <a href="{{ route('pengumuman.show',$p->id) }}" class="card-img-top">
+                    @if(is_null($p->thumbnail))
+                        <img src="{{ asset('image/default_thumbnail.png') }}" style="width:100%" alt="Card image-top">
+                    @else
+                        <img src="{{ asset($p->thumbnail) }}" style="width:100%" alt="Card image-top">
+                    @endif
+                  </a>
                     <div class="h4 text-primary">{{$p->judul}}</div>
-
                     <div class="d-flex justify-content-between align-items-center">
                       <div>
                         <span class="badge badge-pill badge-soft-secondary">

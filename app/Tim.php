@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $deleted_at
  * @property User $user
  * @property Lomba $lomba
- * @property Anggotum[] $anggotas
+ * @property Anggotas[] $anggotas
  * @property Jadwal[] $jadwals
  * @property Pengumpulan[] $pengumpulans
  */
@@ -26,7 +26,7 @@ class Tim extends Model
 {
     /**
      * The table associated with the model.
-     * 
+     *
      * @var string
      */
     protected $table = 'tim';
@@ -57,7 +57,7 @@ class Tim extends Model
      */
     public function anggotas()
     {
-        return $this->hasMany('App\Anggotum', 'id_tim');
+        return $this->hasMany('App\Anggota', 'id_tim');
     }
 
     /**

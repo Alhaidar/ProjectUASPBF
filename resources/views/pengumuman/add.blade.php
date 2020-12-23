@@ -18,15 +18,15 @@
     <div class="card card-form">
         <div class="row no-gutters">
             <div class="col-lg-12 card-form__body card-body">
-                <form action="{{route('pengumuman.store')}}" method="post">
+                <form action="{{route('pengumuman.store')}}" method="post" enctype="multipart/form-data">
                   {{ csrf_field() }}
                   <div class="form-group">
                       <label for="">Judul Pengumuman</label>
-                      <input type="lomba" class="form-control" id="judul" placeholder="Judul" name="judul">
+                      <input type="lomba" class="form-control" id="judul" placeholder="Judul" name="judul" required>
                   </div>
                   <div class="form-group">
                       <label for="">Konten</label>
-                      <textarea class="form-control" data-toggle="quill" data-quill-placeholder="Konten isi pengumuman" name="konten" id="konten" rows="3"></textarea>
+                      <textarea class="form-control" data-toggle="quill" data-quill-placeholder="Konten isi pengumuman" name="konten" id="konten" rows="3" required></textarea>
                   </div>
                   <div class="form-group">
                       <label for="thumbnail">Gambar Sampul</label><br>

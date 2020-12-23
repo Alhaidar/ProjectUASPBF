@@ -24,7 +24,7 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="{{ route('akun.index') }}">Akun</a>
                             @if(Auth::user()->role == 'peserta')
-                            <a class="dropdown-item" href="{{ route('tim.index') }}">Edit Tim</a>
+                            <a class="dropdown-item" href="{{ route('akun.index').'#manage-team' }}">Edit Tim</a>
                             @endif
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"

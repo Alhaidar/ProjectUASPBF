@@ -32,27 +32,28 @@
 
     <div class="row">
       @forelse($pengumuman as $p)
-        <div class="col-md-6">
+        <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex align-items-center py-2 border-bottom">
-                      @if($p->tumbnail == "")
-                      <a href="#" class="card-img-top">
-                          <img src="http://127.0.0.1:8000/image/default_tumbnail.png" style="width:100%;" alt="Card image-top">
-                      </a>
+                      <a href="{{route('pengumuman.show',$p->id)}}" class="card-img-top">
+                      @if(is_null($p->thumbnail))
+                          <img src="{{ asset('image/default_thumbnail.png') }}" style="width:100%;" alt="Card image-top">
                       @else
-                      <a href="#" class="card-img-top">
-                          <img src="{{ $p->tumbnail }}" style="width:100%;" alt="Card image-top">
-                      </a>
+                          <img src="{{ asset($p->thumbnail) }}" style="width:100%;" alt="Card image-top">
                       @endif
+                    </a>
                     </div>
                     <div class="d-flex align-items-center py-2 border-bottom" style="min-width: 200px;">
                         <div class="d-flex">
                             <div>
-                                <h4 class="card-title mb-1">{{ $p->judul }}</h4>
-                                <p class="text-muted">{{ $p->created_at }}</p>
+                                <h4 class="card-title mb-1 text-primary">{{ $p->judul }}</h4>
+                                <span class="badge badge-pill badge-soft-secondary">
+                                  {{ \Carbon\Carbon::parse($p->created_at)->format('d/m/Y')}}
+                                </span>
                             </div>
                         </div>
+                        @if(Auth::user()->role == 'admin')
                         <div class="dropdown ml-auto">
                             <a href="#" class="dropdown-toggle text-muted" data-caret="false" data-toggle="dropdown">
                                 <i class="material-icons">more_vert</i>
@@ -63,12 +64,16 @@
                                 <a class="dropdown-item text-danger" href="{{route('pengumuman.destroy',$p->id)}}">Hapus</a>
                             </div>
                         </div>
+                        @endif
                     </div>
 
                     <div class="flex" style="min-width: 200px;">
                         <div class="d-flex">
-                            <p>{{ $p->konten }}</p>
+                            <p class="text-muted">{{ \Str::words($p->konten) }}</p>
                         </div>
+                        <a href="{{ route('pengumuman.show',$p->id) }}" class="text-dark mb-2 text-decoration-none">
+                            <strong>Baca Selengkapnya</strong>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $created_at
  * @property string $updated_at
  * @property string $deleted_at
- * @property Fakulta $fakulta
+ * @property Fakultas $fakulta
  * @property Tim $tim
  */
 class Anggota extends Model
@@ -36,7 +36,7 @@ class Anggota extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function fakulta()
+    public function fakultas()
     {
         return $this->belongsTo('App\Fakulta', 'id_fakultas');
     }

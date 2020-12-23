@@ -300,7 +300,7 @@ $lomba = \App\Lomba::all();
                             <div class="form-group">
                                 <label class="text-label" for="nim_2">NIM Anggota 2:</label>
                                 <div class="input-group input-group-merge">
-                                    <input id="nim_2" type="number" name="nim[]" class="form-control form-control-prepended" placeholder="Nomor Induk Mahasiswa" required autofocus>
+                                    <input id="nim_2" type="number" name="nim[]" class="form-control form-control-prepended" placeholder="Nomor Induk Mahasiswa" autofocus>
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <span class="far fa-id-card"></span>
