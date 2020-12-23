@@ -17,8 +17,10 @@
     <form action="#" class="mb-2">
         <div class="d-flex">
             <div class="search-form mr-3 search-form--light">
-                <input type="text" class="form-control" placeholder="Cari Pengumuman" id="searchSample02">
-                <button class="btn" type="button"><i class="material-icons">search</i></button>
+                <form action="{{route('pengumuman.index')}}" method="GET">
+                  <input type="text" name="q"class="form-control" placeholder="Cari Pengumuman" value="{{ $keyword }}">
+                  <button class="btn" type="submit"><i class="material-icons">search</i></button>
+                </form>
             </div>
             @if(Auth::user()->role == 'admin')
             <div class="form-inline ml-auto">

@@ -45,7 +45,7 @@
       <button type="submit" class="btn btn-success">Simpan</button>
       </form>
   </div>
-
+  @if(Auth::user()->role =='peserta')
   <form action="{{route('tim.update',$tim->id)}}" method="post">
   <div class="card card-form" id="manage-team">
       @csrf
@@ -131,6 +131,7 @@
       <button type="submit" class="btn btn-success">Simpan</button>
       </form>
   </div>
+  @endif
 </div>
 @endsection
 
@@ -141,7 +142,7 @@ $(document).ready(function(){
      $('#btn_editsandi').click(function(){
          $("#editsandi").slideToggle();
      });
-
+     @if(Auth::user()->id == 'peserta')
      $(document).on('click','.hapus_entri',function(){
        var id_field = i;
 
@@ -189,8 +190,8 @@ $(document).ready(function(){
    </div>
 </div>
 `);
-
      });
+     @endif
  });
 
 </script>

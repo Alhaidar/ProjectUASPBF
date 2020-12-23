@@ -14,14 +14,18 @@ class PengumumanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+      $keyword = '';
       $pengumuman   = Pengumuman::whereNotNull('created_at')
                     ->whereNotNull('konten')
                     ->whereNotNull('judul')
                     ->get();
-
-      return view('pengumuman.index', compact('pengumuman'));
+      if( isset($request->q) && !is_null($request->q) ){
+          $keyword = $request->q;
+          $pengumuman = \App\Pengumuman::where('konten','like','%'.$keyword.'%')->orwhere('judul','like','%'.$keyword.'%')->get();
+      }
+      return view('pengumuman.index', compact('pengumuman','keyword'));
     }
 
 

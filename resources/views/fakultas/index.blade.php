@@ -15,6 +15,12 @@
 
     <form action="#" class="mb-2">
         <div class="d-flex">
+            <div class="search-form mr-3 search-form--light">
+                <form action="{{route('fakultas.index')}}" method="GET">
+                  <input type="text" name="q"class="form-control" placeholder="Cari Fakultas" value="{{ $keyword }}">
+                  <button class="btn" type="submit"><i class="material-icons">search</i></button>
+                </form>
+            </div>
             @if(Auth::user()->role == 'admin')
             <div class="form-inline ml-auto">
                 <div class="form-group">

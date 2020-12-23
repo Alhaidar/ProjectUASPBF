@@ -12,11 +12,16 @@ class FakultasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-      $fakultas     = Fakultas::whereNotNull('nama')
-                    -> get();
-        return view('fakultas.index', compact('fakultas'));
+        $keyword = '';
+        $fakultas     = Fakultas::whereNotNull('nama')
+                      -> get();
+        if( isset($request->q) && !is_null($request->q) ){
+            $keyword = $request->q;
+            $fakultas = \App\Fakultas::where('nama','like','%'.$keyword.'%')->get();
+        }
+        return view('fakultas.index', compact('fakultas','keyword'));
     }
 
     public function create()
