@@ -7,8 +7,10 @@
                       <?php
                       $words = explode(" ", Auth::user()->nama);
                       $acronym = "";
-                      foreach ($words as $w) {
-                      $acronym .= $w[0];
+                      foreach ($words as $len => $w) {
+                        if($len <2){
+                          $acronym .= strtoupper($w[0]);
+                        }
                       }
                        ?>
                         <span class="avatar avatar-sm mr-2">
