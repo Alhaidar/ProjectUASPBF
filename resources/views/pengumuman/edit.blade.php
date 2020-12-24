@@ -26,7 +26,7 @@
                   </div>
                   <div class="form-group">
                       <label for="">Konten</label>
-                      <textarea class="form-control" data-toggle="quill" data-quill-placeholder="Konten isi pengumuman" name="konten" id="konten" rows="3" required></textarea>
+                      <textarea class="form-control" data-toggle="quill" data-quill-placeholder="Konten isi pengumuman" name="konten" id="konten" rows="3" required> {{$pengumuman->konten}} </textarea>
                   </div>
                   <div class="form-group">
                       <label for="thumbnail">Gambar Sampul</label><br>

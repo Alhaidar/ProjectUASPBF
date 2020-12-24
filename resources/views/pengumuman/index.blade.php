@@ -39,17 +39,18 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center py-2 border-bottom">
                       <a href="{{route('pengumuman.show',$p->id)}}" class="card-img-top">
-                      @if(is_null($p->thumbnail))
-                          <img src="{{ asset('image/default_thumbnail.png') }}" style="width:100%;" alt="Card image-top">
-                      @else
-                          <img src="{{ asset($p->thumbnail) }}" style="width:100%;" alt="Card image-top">
-                      @endif
-                    </a>
+                        @if(is_null($p->thumbnail))
+                            <img src="{{ asset('image/default_thumbnail.png') }}" style="width:100%;" alt="Card image-top">
+                        @else
+                            <img src="{{ asset($p->thumbnail) }}" style="width:100%;" alt="Card image-top">
+                        @endif
+                      </a>
                     </div>
                     <div class="d-flex align-items-center py-2 border-bottom" style="min-width: 200px;">
                         <div class="d-flex">
                             <div>
-                                <h4 class="card-title mb-1 text-primary">{{ $p->judul }}</h4>
+                                <a href="{{ route('pengumuman.show',$p->id) }}" style="font-size:20px" class="card-title mb-1 text-primary">{{ $p->judul }}</a>
+                                <br>
                                 <span class="badge badge-pill badge-soft-secondary">
                                   {{ \Carbon\Carbon::parse($p->created_at)->format('d/m/Y')}}
                                 </span>

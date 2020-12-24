@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Pengumpulan;
 
 class SubmisiController extends Controller
 {
@@ -13,7 +14,12 @@ class SubmisiController extends Controller
      */
     public function index()
     {
-        //
+      $pengumpulan  = Pengumpulan::whereNotNull('id_tim')
+                    ->whereNotNull('subjek')
+                    ->whereNotNull('file')
+                    ->get();
+
+      return view('submisi.index', compact('pengumpulan'));
     }
 
     /**

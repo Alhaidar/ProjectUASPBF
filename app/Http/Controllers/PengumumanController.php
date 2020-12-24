@@ -53,7 +53,11 @@ class PengumumanController extends Controller
 
     public function show($id)
     {
-        //
+        $pengumuman = Pengumuman::find($id);
+        if(is_null($pengumuman)){
+            return redirect('/pengumuman')->with(['error' => 'Pengumuman tidak ditemukan']);
+        }
+        return view('pengumuman.show',['pengumuman'=>$pengumuman]);
     }
 
 
