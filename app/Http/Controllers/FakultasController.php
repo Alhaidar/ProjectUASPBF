@@ -31,6 +31,9 @@ class FakultasController extends Controller
 
     public function store(Request $request)
     {
+      $this->validate($request,[
+        'fakultas' => 'required',
+      ]);
         $fakultas = new Fakultas;
         $fakultas->nama = $request->fakultas;
         $fakultas->save();

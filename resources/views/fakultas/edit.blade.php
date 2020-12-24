@@ -24,7 +24,7 @@
             <div class="col-lg-9 card-form__body card-body">
                 <form action="{{route('fakultas.update',$fakultas->id)}}" method="post">
                   {{ csrf_field() }}
-                  <div class="form-group">
+                  <div class="form-group {{ $errors->has('fakultas') ? ' has-error' : '' }}">
                       <label for="">Nama Fakultas</label>
                       <input type="lomba" class="form-control" id="fakultas" placeholder="Nama Fakultas" value="{{$fakultas->nama}}" name="nama">
                   </div>

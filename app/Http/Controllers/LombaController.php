@@ -28,9 +28,13 @@ class LombaController extends Controller
 
     public function store(Request $request)
     {
+      $this->validate($request,[
+        'bidang_lomba' => 'required',
+        'batas_waktu' => 'required',
+      ]);
       $lomba = new Lomba;
       $lomba->nama = $request->bidang_lomba;
-      $lomba->batas_waktu = $request->waktu_lomba;
+      $lomba->batas_waktu = $request->batas_waktu;
       $lomba->save();
       return redirect('/lomba')->with(['success' => 'Berhasil di input']);
     }

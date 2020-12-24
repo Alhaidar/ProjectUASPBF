@@ -37,6 +37,11 @@ class PengumumanController extends Controller
 
     public function store(Request $request)
     {
+      $this->validate($request,[
+        'judul' => 'required',
+        'konten' => 'required',
+        'thumbnail' => 'mimes:jpg,png,jpeg'
+      ]);
         $images = 'image/default_tumbnail.png';
         $filekind = 'thumbnail';
         $pengumuman = new Pengumuman;
@@ -73,6 +78,11 @@ class PengumumanController extends Controller
 
     public function update(Request $request, $id)
     {
+      $this->validate($request,[
+        'judul' => 'required',
+        'konten' => 'required',
+        'thumbnail' => 'mimes:jpg,png,jpeg'
+      ]);
         $images = 'image/default_tumbnail.png';
         $filekind = 'thumbnail';
         $pengumuman = Pengumuman::find($id);

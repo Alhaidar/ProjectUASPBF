@@ -25,11 +25,11 @@
             <div class="col-lg-9 card-form__body card-body">
                 <form action="{{route('lomba.update',$lomba->id)}}" method="post">
                   {{ csrf_field() }}
-                  <div class="form-group">
+                  <div class="form-group {{ $errors->has('bidang_lomba') ? ' has-error' : '' }}">
                       <label for="lomba">Nama Bidang Lomba</label>
                       <input type="lomba" class="form-control" id="lomba" placeholder="Bidang Lomba" name="nama" value="{{$lomba->nama}}">
                   </div>
-                  <div class="form-group">
+                  <div class="form-group {{ $errors->has('batas_waktu') ? ' has-error' : '' }}">
                       <label for="date-time">Batas Waktu Lomba</label>
                       <input type="datetime-local" class="form-control" id="date-time" name="batas_waktu" value="{{$lomba->batas_waktu}}">
                   </div>
