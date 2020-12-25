@@ -38,7 +38,8 @@
                   <option value="juri" @if ($user->role == "juri") selected @endif >Juri</option>
                 </select>
             </div>
-            <div class="form-group">
+            <a class="text-decoration-none" href="javascript:void(0)" id="btn_editsandi"><i class="fas fa-edit"></i> Edit kata sandi</a>
+            <div class="form-group" id="editsandi">
                 <label for="passwd">Kata sandi</label>
                 <input name="password" id="passwd" type="password" class="form-control" placeholder="Kata sandi">
             </div>
@@ -48,4 +49,13 @@
     </div>
   </form>
 </div>
+@endsection
+@section('js')
+$("#editsandi").hide();
+<script type="text/javascript">
+$("#editsandi").hide();
+$('#btn_editsandi').click(function(){
+    $("#editsandi").slideToggle();
+});
+</script>
 @endsection

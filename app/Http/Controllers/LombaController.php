@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Lomba;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class LombaController extends Controller
 {
@@ -28,10 +29,15 @@ class LombaController extends Controller
 
     public function store(Request $request)
     {
-      $this->validate($request,[
-        'bidang_lomba' => 'required',
-        'batas_waktu' => 'required',
-      ]);
+      $validation = Validator::make($request->all(),[
+                    'bidang_lomba' => 'required',
+                    'batas_waktu' => 'required',
+                  ]);
+      if($validation->fails()){
+          $error = $validation->errors()->all();
+          $error = implode('<br>	• ', $error);
+          return redirect()->back()->with('error', 'Harap memenuhi ketentuan berikut: <br> • '.$error);
+      }
       $lomba = new Lomba;
       $lomba->nama = $request->bidang_lomba;
       $lomba->batas_waktu = $request->batas_waktu;

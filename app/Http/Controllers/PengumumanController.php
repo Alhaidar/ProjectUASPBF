@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Pengumuman;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 use App\helpers\storageHelper as SH;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class PengumumanController extends Controller
 {
@@ -37,11 +38,16 @@ class PengumumanController extends Controller
 
     public function store(Request $request)
     {
-      $this->validate($request,[
-        'judul' => 'required',
-        'konten' => 'required',
-        'thumbnail' => 'mimes:jpg,png,jpeg'
-      ]);
+        $validation = Validator::make($request->all(),[
+                        'judul' => 'required',
+                        'konten' => 'required',
+                        'thumbnail' => 'mimes:jpg,png,jpeg'
+                      ]);
+        if($validation->fails()){
+            $error = $validation->errors()->all();
+            $error = implode('<br>	• ', $error);
+            return redirect()->back()->with('error', 'Harap memenuhi ketentuan berikut: <br> • '.$error);
+        }
         $images = 'image/default_tumbnail.png';
         $filekind = 'thumbnail';
         $pengumuman = new Pengumuman;
@@ -78,11 +84,16 @@ class PengumumanController extends Controller
 
     public function update(Request $request, $id)
     {
-      $this->validate($request,[
-        'judul' => 'required',
-        'konten' => 'required',
-        'thumbnail' => 'mimes:jpg,png,jpeg'
-      ]);
+        $validation = Validator::make($request->all(),[
+                        'judul' => 'required',
+                        'konten' => 'required',
+                        'thumbnail' => 'mimes:jpg,png,jpeg'
+                      ]);
+        if($validation->fails()){
+            $error = $validation->errors()->all();
+            $error = implode('<br>	• ', $error);
+            return redirect()->back()->with('error', 'Harap memenuhi ketentuan berikut: <br> • '.$error);
+        }
         $images = 'image/default_tumbnail.png';
         $filekind = 'thumbnail';
         $pengumuman = Pengumuman::find($id);
