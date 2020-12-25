@@ -22,7 +22,7 @@ Route::resource('submisi',"SubmisiController")->middleware(['auth', 'CekRole:jur
 Route::group(['middleware' => ['auth','CekRole:peserta']],function(){
   Route::resource('tim',"TimController");
   Route::resource('pengumpulan',"PengumpulanController");
-
+  Route::get('/pengumpulan/{id}/batal', 'PengumpulanController@batal')->name('pengumpulan.batal');
 });
 // ADMIN //
 Route::group(['middleware' => ['auth','CekRole:admin']],function(){

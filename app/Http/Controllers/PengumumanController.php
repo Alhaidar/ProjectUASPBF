@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Pengumuman;
 use Illuminate\Http\Request;
 use App\helpers\storageHelper as SH;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class PengumumanController extends Controller
