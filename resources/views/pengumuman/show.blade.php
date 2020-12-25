@@ -1,4 +1,9 @@
-@extends('layouts.base')
+@if(Auth::user())
+  @php ($page = 'layouts.base')
+@else
+  @php ($page = 'layouts.front')
+@endif
+@extends($page)
 @section('title', "Pengumuman")
 
 @section('css')
@@ -19,19 +24,18 @@
               </div>
               <div class="card-body">
                 <div class="d-flex align-items-center py-2 border-bottom">
-                  <a href="{{route('pengumuman.show',$pengumuman->id)}}" class="card-img-top">
                     @if(is_null($pengumuman->thumbnail))
-                        <img src="{{ asset('image/default_thumbnail.png') }}" style="width:100%;" alt="Card image-top">
+                        <img src="{{ asset('image/default_thumbnail.png') }}" style="height:100%; max-height: 400px; margin:0 auto" alt="Card image-top">
                     @else
-                        <img src="{{ asset($pengumuman->thumbnail) }}" style="width:100%;" alt="Card image-top">
+                        <img src="{{ asset($pengumuman->thumbnail) }}" style="height:100%; max-height: 400px; margin:0 auto" alt="Card image-top">
                     @endif
-                  </a>
                 </div>
-                <p> {{ $pengumuman->konten }} </p>
+                <p> {!! $pengumuman->konten !!} </p>
               </div>
           </div>
           <div class="mb-2">
             <a href="{{route('pengumuman.index')}}" class="btn btn-light"><i class="fas fa-chevron-left"></i> Kembali</a>
+            <a href="{{route('pengumuman.show',$pengumuman->id+1)}}" class="btn btn-info"><i class="fas fa-chevron-right"></i> Selanjutnya</a>
           </div>
       </div>
     </div>
