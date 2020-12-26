@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Tim;
+use App\Juri;
 use Illuminate\Http\Request;
-use App\Pengumpulan;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class SubmisiController extends Controller
 {
@@ -14,12 +17,14 @@ class SubmisiController extends Controller
      */
     public function index()
     {
-      $pengumpulan  = Pengumpulan::whereNotNull('id_tim')
-                    ->whereNotNull('subjek')
-                    ->whereNotNull('file')
-                    ->get();
-
-      return view('submisi.index', compact('pengumpulan'));
+      // $pengumpulan  = Pengumpulan::whereNotNull('id_tim')
+      //               ->whereNotNull('subjek')
+      //               ->whereNotNull('file')
+      //               ->get();
+      $uid  =  Auth::user()->id;
+      $juri = Juri::where('id_user', $uid)->first();
+      $tims = Tim::where('id_lomba', $juri->id_lomba)->get();
+      return view('submisi.index', compact('tims', 'juri'));
     }
 
     /**

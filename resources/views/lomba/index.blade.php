@@ -51,7 +51,9 @@
                               <td>
                                   <strong class="lists-bidang">{{ $l->nama }}</strong>
                               </td>
-                              <?php Carbon\Carbon::setLocale('id'); ?>
+                              @php
+                              Carbon\Carbon::setLocale('id');
+                              @endphp
                               <td><small class="text-muted">{{ \Carbon\Carbon::parse($l->batas_waktu)->isoFormat('D MMMM YYYY, h:mm:ss a') }}</small></td>
                               <!-- <td><small class="text-muted">{{ $l->batas_waktu }}</small></td> -->
                               <td><div class="dropdown ml-auto">

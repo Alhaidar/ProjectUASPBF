@@ -38,7 +38,7 @@ class Anggota extends Model
      */
     public function fakultas()
     {
-        return $this->belongsTo('App\Fakulta', 'id_fakultas');
+        return $this->belongsTo('App\Fakultas', 'id_fakultas');
     }
 
     /**
