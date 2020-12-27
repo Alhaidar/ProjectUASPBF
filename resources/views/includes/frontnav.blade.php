@@ -5,8 +5,8 @@
                 <li class="nav-item active">
                     <a href="{{route('front.index')}}" class="nav-link active">Beranda</a>
                 </li>
-                <a href="#jadwal" class="nav-link">Jadwal</a>
-                <a href="#pengumuman" class="nav-link">Pengumuman</a>
+                <a href="{{route('front.index')}}#jadwal" class="nav-link">Jadwal</a>
+                <a href="{{route('front.index')}}#pengumuman" class="nav-link">Pengumuman</a>
             </ul>
         </div>
     </div>
