@@ -66,18 +66,42 @@ class JadwalController extends Controller
 
     public function edit($id)
     {
-        return view('jadwal.edit');
+        $jadwal = Jadwal::find($id);
+        if(is_null($jadwal)){
+            return redirect()->back()->with(['error' => 'Jadwal tidak ditemukan']);
+        }
+        return view('jadwal.edit',compact('jadwal'));
     }
 
 
     public function update(Request $request, $id)
     {
-        //
+        $jadwal = Jadwal::find($id);
+        if(is_null($jadwal)){
+            return redirect()->back()->with(['error' => 'Jadwal tidak ditemukan']);
+        }
+        if($request->status == 'on'){
+          $status = 1;
+        }else{
+          $status = 0;
+        }
+        $jadwal->update([
+          'waktu_mulai'     => $request->waktu_mulai,
+          'waktu_berakhir'  => $request->waktu_berakhir,
+          'status'          => $status
+        ]);
+        return redirect()->route('jadwal.index')->with('success', 'Jadwal berhasil diperbarui!');
     }
 
 
     public function destroy($id)
     {
-        //
+        $jadwal = Jadwal::find($id);
+        if(is_null($jadwal)){
+          return redirect()->back()->with('error', 'Jadwal tidak ditemukan!');
+        }else{
+          $jadwal->delete();
+        }
+        return redirect()->back()->with(['success' => 'Jadwal berhasil di hapus']);
     }
 }

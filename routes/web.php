@@ -47,7 +47,7 @@ Route::group(['middleware' => ['auth','CekRole:admin']],function(){
         Route::post('/tambah-masal', 'JadwalController@bulkstore')->name('bulkstore')->middleware(['auth', 'CekRole:admin']);
         Route::post('/tambah',       'JadwalController@store')->name('store')->middleware(['auth', 'CekRole:admin']);
         Route::get('/{id}/edit',     'JadwalController@edit')->name('edit')->middleware(['auth', 'CekRole:admin']);
-        Route::patch('/{id}/edit',   'JadwalController@update')->name('update')->middleware(['auth', 'CekRole:admin']);
+        Route::post('/{id}/edit',   'JadwalController@update')->name('update')->middleware(['auth', 'CekRole:admin']);
         Route::get('/{id}/hapus', 'JadwalController@destroy')->name('destroy')->middleware(['auth', 'CekRole:admin']);
     });
     Route::group(['as' => 'pengumuman.' , 'prefix' => 'pengumuman'], function () {

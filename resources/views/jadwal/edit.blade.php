@@ -12,6 +12,9 @@
 </div>
 
 <div class="container page__container">
+    <div class="mb-2">
+      <a href="{{route('jadwal.index')}}" class="btn btn-light"><i class="fas fa-chevron-left"></i> Batal</a>
+    </div>
     <div class="card card-form">
         <div class="row no-gutters">
             <div class="col-lg-3 card-body">
@@ -19,42 +22,37 @@
                 <p class="text-muted">Jika melakukan perubahan jadwal, mohon menginformasikannya kepada juri dan peserta</p>
             </div>
             <div class="col-lg-9 card-form__body card-body">
-                <form>
+                <form action="{{route('jadwal.update', $jadwal->id)}}" method="post">
+                    @csrf
+                    <input type="text" name="id_tim" value="{{$jadwal->tim->id}}" style="display:none">
                     <div class="form-group">
                         <label for="select01">Nama Ketua</label>
-                        <select id="select01" data-toggle="select" class="form-control">
-                            <option selected="">My first option</option>
-                            <option>Another option</option>
-                            <option>Third option is here</option>
-                        </select>
+                        <input type="text" class="form-control" value="{{$jadwal->tim->user->nama}}" disabled>
                     </div>
                     <div class="form-group">
                         <label for="select01">Judul Proposal</label>
-                        <select id="select01" data-toggle="select" class="form-control">
-                            <option selected="">My first option</option>
-                            <option>Another option</option>
-                            <option>Third option is here</option>
-                        </select>
+                        <input type="text" class="form-control" value="{{$jadwal->tim->judul_proposal}}" disabled>
                     </div>
                     <div class="form-group">
-                        <label class="text-label" for="flatpickrSample04">Tanggal Presentasi</label>
-                        <input id="flatpickrSample04" type="hidden" class="form-control flatpickr-input" placeholder="Flatpickr date time example" data-toggle="flatpickr" data-flatpickr-enable-time="true" data-flatpickr-alt-format="F j, Y at H:i" data-flatpickr-date-format="Y-m-d H:i" value="2018-10-07 15:35"><input class="form-control flatpickr-input" placeholder="Flatpickr date time example" tabindex="0" type="text" readonly="readonly">
+                        <label class="text-label" for="waktu_mulai">Tanggal Presentasi Dimulai</label>
+                        <input type="datetime" class="form-control" name="waktu_mulai" id="waktu_mulai" value="{{$jadwal->waktu_mulai}}" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="text-label" for="waktu_berakhir">Tanggal Presentasi Berakhir</label>
+                        <input type="datetime" class="form-control" name="waktu_berakhir" id="waktu_berakhir" value="{{$jadwal->waktu_berakhir}}" required>
                     </div>
                     <div class="flex">
-                        <label for="subscribe">Status Presentasi</label><br>
+                        <label for="status">Status Presentasi</label><br>
                         <div class="custom-control custom-checkbox-toggle custom-control-inline mr-1">
-                            <input checked="" type="checkbox" id="subscribe" class="custom-control-input">
-                            <label class="custom-control-label" for="subscribe">Yes</label>
+                            <input checked="" name="status" type="checkbox" id="status" class="custom-control-input">
+                            <label class="custom-control-label" for="subscribe">Sudah</label>
                         </div>
                         <label for="subscribe" class="mb-0">Selesai</label>
                     </div>
-                </form>
             </div>
         </div>
-    </div>
-    <div class="text-right mb-5">
-      <a href="" class="btn btn-danger">Batal</a>
-      <a href="" class="btn btn-warning">Ubah</a>
+        <button type="submit"class="btn btn-success">Tambah</button>
+      </form>
     </div>
 </div>
 @endsection
