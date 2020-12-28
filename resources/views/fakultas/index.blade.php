@@ -63,9 +63,12 @@
             </div>
         </div>
         @empty
-          <td colspan="4">
-              <h6 style="margin:20px auto 40px auto;text-align:center">Belum ada jadwal, lakukan pengumpulan untuk memperoleh jadwal.</h6>
-          </td>
+          @if($keyword == '')
+            @php($msg = 'Belum ada fakultas')
+          @else
+            @php($msg = 'Kata kunci <code>'.$keyword.'</code> tidak cocok dengan fakultas manapun')
+          @endif
+          <h6 style="margin:20px auto 40px auto;text-align:center">{!!$msg!!}.</h6>
         @endforelse
       </div>
   </div>

@@ -83,7 +83,13 @@
         </div>
         @empty
           <td colspan="4">
-              <h6 style="margin:20px auto 40px auto;text-align:center">Belum ada pengumuman.</h6>
+              @if($keyword == '')
+                @php($msg = 'Belum ada pengumuman')
+              @else
+                @php($msg = 'Kata kunci <code>'.$keyword.'</code> tidak cocok dengan pengumuman apapun')
+              @endif
+              <h6 style="margin:20px auto 40px auto;text-align:center">{!!$msg!!}.</h6>
+
           </td>
         @endforelse
     </div>
