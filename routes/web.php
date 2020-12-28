@@ -42,7 +42,8 @@ Route::group(['middleware' => ['auth','CekRole:admin']],function(){
     });
     Route::group(['as' => 'jadwal.' , 'prefix' => 'jadwal'], function () {
         Route::get('/tambah',        'JadwalController@create')->name('create')->middleware(['auth', 'CekRole:admin']);
-        Route::get('/tambah-masal',  'JadwalController@bulkcreate')->name('bulkcreate')->middleware(['auth', 'CekRole:admin']);
+        Route::post('/setup-masal',  'JadwalController@setupbulk')->name('setupbulk')->middleware(['auth', 'CekRole:admin']);
+        // Route::get('/tambah-masal',  'JadwalController@bulkcreate')->name('bulkcreate')->middleware(['auth', 'CekRole:admin']);
         Route::post('/tambah-masal', 'JadwalController@bulkstore')->name('bulkstore')->middleware(['auth', 'CekRole:admin']);
         Route::post('/tambah',       'JadwalController@store')->name('store')->middleware(['auth', 'CekRole:admin']);
         Route::get('/{id}/edit',     'JadwalController@edit')->name('edit')->middleware(['auth', 'CekRole:admin']);

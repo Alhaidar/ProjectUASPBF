@@ -12,6 +12,20 @@
 </div>
 
 <div class="container page__container">
+  @if(Auth::user()->role == 'admin')
+  <form action="#" class="mb-2">
+      <div class="d-flex">
+          <div class="form-inline ml-auto">
+              <div class="form-group">
+                <!-- <a href="{{route('jadwal.create')}}" class="btn btn-success ml-lg-3"><i class="fas fa-plus"></i> Tambah Jadwal Tunggal</a> -->
+                <a href="javascript:void(0)" class="btn btn-success ml-lg-3" id="btn_bulkform"><i class="fas fa-calendar-alt"></i> Tambah Jadwal Masal</a>
+              </div>
+          </div>
+      </div>
+  </form>
+  @endif
+  @include('jadwal.include.bulkform')
+
   <div class="card card-form">
       <div class="row no-gutters" id="jadwal">
           <div class="col-lg-3 card-body">
@@ -42,21 +56,24 @@
                                 <p>{{ $j->tim->user->nama }}</p>
                               </td>
                               <td>{{ $j->tim->judul_proposal }}</td>
-                              <td><small class="text-muted">{{ \Carbon\Carbon::parse($j->waktu_mulai)->format('dd-MM-yyyy HH:mm:ss')}} s.d {{ \Carbon\Carbon::parse($j->waktu_berakhir)->format('dd-MM-yyyy HH:mm:ss')}}</small></td>
+                              <td><small class="text-muted">{{ \Carbon\Carbon::parse($j->waktu_mulai)->format('d-M-yy H:m:s')}} s.d {{ \Carbon\Carbon::parse($j->waktu_berakhir)->format('d-M-yy H:m:s')}}</small></td>
                               @if($j->status == "1")
                               <td><span class="badge badge-success">Sudah Presentasi</span></td>
                               @else
                               <td><span class="badge badge-warning">Belum Presentasi</span></td>
                               @endif
+
+                              @if(Auth::user()->role == 'admin')
                               <td><div class="dropdown ml-auto">
                                       <a href="#" data-toggle="dropdown" data-caret="false" class="text-muted" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                       <div class="dropdown-menu dropdown-menu-left" style="display: none;">
-                                        <a class="dropdown-item" href="#">Ubah</a>
+                                        <a class="dropdown-item" href="{{route('jadwal.edit', $j->id)}}">Ubah</a>
                                           <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Hapus</a>
+                                        <a class="dropdown-item text-danger" href="{{route('jadwal.destroy', $j->id)}}">Hapus</a>
                                       </div>
                                   </div>
                               </td>
+                              @endif
                           </tr>
                           @empty
                             <td colspan="4">
@@ -75,4 +92,12 @@
 @endsection
 
 @section('js')
+<script type="text/javascript">
+$(document).ready(function(){
+     $("#bulkform").hide();
+     $('#btn_bulkform').click(function(){
+         $("#bulkform").slideToggle();
+     });
+});
+</script>
 @endsection
