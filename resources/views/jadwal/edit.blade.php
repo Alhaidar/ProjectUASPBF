@@ -44,18 +44,40 @@
                     <div class="flex">
                         <label for="status">Status Presentasi</label><br>
                         <div class="custom-control custom-checkbox-toggle custom-control-inline mr-1">
-                            <input checked="" name="status" type="checkbox" id="status" class="custom-control-input">
-                            <label class="custom-control-label" for="subscribe">Sudah</label>
+                            <input @if($jadwal->status == 1)  checked="" @endif  name="status" type="checkbox" id="status" class="custom-control-input inp">
+                            <label class="custom-control-label tgler" for="status"></label>
                         </div>
-                        <label for="subscribe" class="mb-0">Selesai</label>
+                        <label for="status" class="mb-0 currentstate">@if($jadwal->status == 1)  Sudah Presentasi @else Belum Presentasi @endif</label>
                     </div>
             </div>
         </div>
-        <button type="submit"class="btn btn-success">Tambah</button>
+        <button type="submit"class="btn btn-success">Simpan</button>
       </form>
     </div>
 </div>
 @endsection
 
 @section('js')
+<script type="text/javascript">
+$(document).ready(function(){
+  @if($jadwal->status == 1)
+    var toogle = false
+  @else
+    var toogle = true
+  @endif
+     $('.tgler').click(function(){
+       if(toogle == true){
+         console.log(toogle)
+         $('.currentstate').text('Sudah Presentasi')
+         toogle = false;
+       }else{
+         console.log(toogle)
+         $('.currentstate').text('Belum Presentasi')
+         toogle = true;
+       }
+
+
+     });
+});
+</script>
 @endsection

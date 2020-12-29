@@ -54,8 +54,8 @@
           <div class="col-lg-4 card-body">
               <p><strong class="headings-color">Tim</strong></p>
               <p class="text-muted mb-0">Kelola data tim dan kelengkapan lomba. Gunakan tombol berikut untuk menambah maupun menghapus anggota. </p>
-              <a href="javascript:void(0)" class="btn btn-primary btn-sm entri_baru"><i class="fas fa-user-plus"> Tambah anggota</i></a>
-              <a class="btn btn-danger btn-sm hapus_entri" href="javascript:void(0);"><i class="fas fa-user-times"> Hapus anggota terakhir</i></a>
+              <a href="javascript:void(0)" class="btn btn-primary btn-sm entri_baru"><i class="fas fa-user-plus"></i> Tambah anggota</a>
+              <a class="btn btn-danger btn-sm hapus_entri" href="javascript:void(0);"><i class="fas fa-user-times"></i> Hapus anggota terakhir</a>
           </div>
           <div class="col-lg-8 card-form__body card-body">
             <div class="card-header card-header-tabs-basic nav" role="tablist">

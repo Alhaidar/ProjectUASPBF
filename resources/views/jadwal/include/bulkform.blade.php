@@ -1,4 +1,4 @@
-<form action="{{route('jadwal.setupbulk')}}" method="post" id="bulkform" style="display:none">
+<form action="{{route('jadwal.setupbulk')}}" method="post" id="bulkform">
   <div class="card card-form">
   @csrf
   <div class="row no-gutters">

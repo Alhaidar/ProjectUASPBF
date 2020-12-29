@@ -37,6 +37,9 @@
                           <div class="col">
                               <label>Waktu Presentasi Berakhir</label>
                           </div>
+                          <div class="col-sm-1">
+
+                          </div>
                       </div>
                   </div>
                   @php($recent = null)
@@ -66,7 +69,7 @@
                               <div class="col">
                                   <input type="datetime" value="{{$recent}}" name="waktu_mulai[]" class="form-control" required>
                               </div>
-                              @php( $recent = Carbon\Carbon::parse($pstart)->addMinute($ptime) )
+                              @php( $recent = Carbon\Carbon::parse($recent)->addMinute($ptime) )
                               <div class="col">
                                   <input type="datetime" value="{{$recent}}" name="waktu_berakhir[]" class="form-control" required>
                               </div>
@@ -75,6 +78,9 @@
                               @else
                                   @php( $recent = Carbon\Carbon::parse($pstart)->addDay() )
                               @endif
+                              <div class="col-sm-1">
+                                <a href="javascript:void(0)" class="btn btn-warning rmv" id="{{$tim->id}}"><i class="fa fa-times"></i></a>
+                              </div>
                           </div>
                       </div>
                       @endif
@@ -92,4 +98,13 @@
 @endsection
 
 @section('js')
+<script type="text/javascript">
+$(document).ready(function(){
+    $(document).on('click','.rmv',function(){
+      var id_field = $(this).attr("id");
+         $("#entries_"+id_field+"").remove();
+    });
+});
+
+</script>
 @endsection
