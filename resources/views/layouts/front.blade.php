@@ -163,6 +163,9 @@
     <!-- App Settings (safe to remove) -->
     <script src="{{ asset('template/js/app-settings.js') }}"></script>
     <script src="{{ asset('template/vendor/toastr.min.js') }}"></script>
+    <!-- List.js -->
+    <script src="{{ asset('template/vendor/list.min.js') }}"></script>
+    <script src="{{ asset('template/js/list.js') }}"></script>
     @yield('js')
     <script>
       @if($message = Session::get('success'))
