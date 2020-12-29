@@ -26,7 +26,7 @@ class PengumpulanController extends Controller
           $uid = Auth::user()->id;
           $tim = Tim::where('id_user',$uid)->get()->first();
       }
-      $pengumpulan  = Pengumpulan::whereNotNull('id_tim')
+      $pengumpulan  = Pengumpulan::where('id_tim', $tim->id)
                     ->whereNotNull('subjek')
                     ->whereNotNull('file')
                     ->get();
@@ -60,7 +60,7 @@ class PengumpulanController extends Controller
           'subjek' =>  $request->subjek,
           'file'   =>  $file,
         ]);
-        return redirect()->back()->with(['success' => 'Berkas berhasil di diunggah']);
+        return redirect()->route('pengumpulan.index')->with(['success' => 'Berkas berhasil di diunggah']);
     }
     public function batal($id)
     {
