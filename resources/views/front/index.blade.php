@@ -34,7 +34,7 @@
                       </div>
 
                     </div>
-                    <p class="text-muted">{!! Str::words($p->konten) !!}</p>
+                    <p class="text-muted">{!! Str::words($p->konten,50) !!}</p>
                     <a href="{{ route('pengumuman.show',$p->id) }}" class="text-dark mb-2">
                         <strong>Baca Selengkapnya</strong>
                     </a>

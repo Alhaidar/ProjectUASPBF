@@ -72,7 +72,7 @@
 
                     <div class="flex" style="min-width: 200px;">
                         <div class="d-flex">
-                            <p class="text-muted">{!!Str::words($p->konten)!!}</p>
+                            <p class="text-muted">{!!Str::words($p->konten,50)!!}</p>
                         </div>
                         <a href="{{ route('pengumuman.show',$p->id) }}" class="text-dark mb-2 text-decoration-none">
                             <strong>Baca Selengkapnya</strong>

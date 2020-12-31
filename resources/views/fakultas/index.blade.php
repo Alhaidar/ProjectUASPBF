@@ -38,7 +38,7 @@
                 <div class="card-body">
                     <div class="d-flex flex-column flex-sm-row">
                         <a href="#" class="avatar mb-3 w-xs-plus-down-100 mr-sm-3">
-                            <img src="http://127.0.0.1:8000/image/logo_emblem.png" alt="Card image cap" class="avatar-course-img">
+                            <img src="{{asset'(image/logo_emblem.png')}}" alt="Card image cap" class="avatar-course-img">
                         </a>
                         <div class="flex" style="min-width: 200px;">
                             <div class="d-flex">
